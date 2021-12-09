@@ -1,13 +1,22 @@
 #include "personagem.h"
 #include <iostream>
 #include <string>
+#include "Data.h"
 using std::cout;
 
 string Personagem::cenarios[CENARIOS] = {"CHINA, BRASIL, EUA"};
 string Personagem::armas[ARMAS] = {"faca", "tesoura", "AK-47"};
 
-Personagem::Personagem(int dia, int mes, int ano)
-:DATA_CRIACAO(dia, mes, ano){}
+Personagem::Personagem(int d, int m, int a)
+{
+     if ( m > 0 && m <= 12 ) // validate the month
+        mes = m;
+    
+    if ( a < 0 )
+        ano = 1900;
+    else
+        ano = a;
+}
 
 Personagem::Personagem()
 :nomePersonagem(""), idadePersonagem(0), MAXSIZENAME(10), check(false){}
@@ -33,6 +42,10 @@ Personagem::Personagem(const Personagem& other)
     this->idadePersonagem = other.idadePersonagem;
 }
 
+void Personagem::print() const
+{
+   cout << dia <<"/"<< mes<<"/"<< ano;
+}
 void Personagem::setNomePersonagem(string nomePersonagem){
     this ->nomePersonagem = nomePersonagem;
 }
@@ -51,7 +64,7 @@ int Personagem::getIdadePersonagem(){
     return idadePersonagem;
 } 
 
-/*void Personagem::mostrarMensagem(){
+void Personagem::mostrarMensagem(){
     if (nomePersonagem.size() > 0){
         cout << "Nome do personagem: "<< nomePersonagem <<"\n";
     }
@@ -63,48 +76,7 @@ int Personagem::getIdadePersonagem(){
     cout << "Idade do personagem: "<<idadePersonagem<<"\n";
 
 }
-*/
 
-void Personagem::displayMessage(bool check) const
-{
-    if(check)
-    {
-        if(this->nomePersonagem.size()>0)
-            cout << "Nome do persongem: " << nomePersonagem << '.\n';          
-        else
-            cout << "Personagem sem nome";
-
-    }
-}
-
-void Personagem::printCenarios(string cenarios) const
-{
-    for( int i = 0; i < CENARIOS; i++ )
-        cout << cenarios[i] << '\n';
-}
-
-void Personagem::printArmas(string armas) const
-{
-    for( int i = 0; i < ARMAS; i++ )
-        cout << armas[i] << '\n';
-}
-
-void Personagem::displayMessage(bool check)
-{
-    //Atribuição dentro da classe
-    this->check = check;
-
-    if(this->check)
-    {
-        if(this->nomePersonagem.size()>0)
-            cout << "Nome do persongem" << nomePersonagem  << '.\n';          
-        else
-            cout << "Personagem sem nome";
-
-        cout << "Este personagem tem" << idadePersonagem << "anos \n";  
-    }
-
-}
 
 int Personagem::numPersonagem = 0;
 const int Personagem::MAXNUMPERSONAGENS = 5;

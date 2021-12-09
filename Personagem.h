@@ -1,7 +1,7 @@
 #ifndef Personagem_H
 #define Personagem_H
 
-#include "date.h"
+#include "Data.h"
 #include <iostream>
 #include <string>
 
@@ -14,6 +14,7 @@ class Personagem
 public:
     //sobrecarga de construtores(3)
 
+    Personagem(int,int,int);
     Personagem(); //const 1
     Personagem(string, int, bool); //const 2
     Personagem(int); //const 3
@@ -29,16 +30,14 @@ public:
     
     //void mostrarMensagem();
 
-    void displayMessage(bool = true) const;
-    void displayMessage(bool = true);
-
     inline static int getnumPersonagem() {return numPersonagem;}
 
     void setNumPersonagem(int numPersonagem);
 
     void printCenarios(string cenarios) const;
     void printArmas(string armas) const;
-
+    
+    void print(int dia, int mes, int ano) const
 private:
     string nomePersonagem;
     int idadePersonagem;
@@ -46,7 +45,7 @@ private:
     int dia;
     int mes;
     int ano;
-    
+
     bool check;
 
     static int numPersonagem;
@@ -60,7 +59,7 @@ private:
     static const int CENARIOS = 3;
     static string cenarios[CENARIOS];
     
-    const date DATA_CRIACAO;
+    const Data DATA_CRIACAO;
 };
 
 #endif
