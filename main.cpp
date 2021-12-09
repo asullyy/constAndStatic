@@ -16,5 +16,7 @@ int main()
 
    cout << "\nTestando atributos e metodos statics.\n";
    cout << "Personagens Criados " << Personagem::getnumPersonagem() << '\n';
+
+   PERS2.printArmas();
    return 0;
 }

@@ -3,6 +3,12 @@
 #include <string>
 using std::cout;
 
+string Personagem::cenarios[CENARIOS] = {"CHINA, BRASIL, EUA"};
+string Personagem::armas[ARMAS] = {"faca", "tesoura", "AK-47"};
+
+Personagem::Personagem(int dia, int mes, int ano)
+:DATA_CRIACAO(dia, mes, ano){}
+
 Personagem::Personagem()
 :nomePersonagem(""), idadePersonagem(0), MAXSIZENAME(10), check(false){}
 
@@ -17,6 +23,7 @@ Personagem::Personagem(int idadePersonagem)
 :nomePersonagem(""), MAXSIZENAME(10){
     setIdadePersonagem(idadePersonagem);
 }
+
 
 // Construtor cópia 
 Personagem::Personagem(const Personagem& other)
@@ -69,6 +76,19 @@ void Personagem::displayMessage(bool check) const
 
     }
 }
+
+void Personagem::printCenarios(string cenarios) const
+{
+    for( int i = 0; i < CENARIOS; i++ )
+        cout << cenarios[i] << '\n';
+}
+
+void Personagem::printArmas(string armas) const
+{
+    for( int i = 0; i < ARMAS; i++ )
+        cout << armas[i] << '\n';
+}
+
 void Personagem::displayMessage(bool check)
 {
     //Atribuição dentro da classe
@@ -113,3 +133,7 @@ void Personagem::setNumPersonagem(int numPersonagem)
 
     cout << "Novos personagens criados" << this->numPersonagem << "\n\n";
 }
+
+//arrays
+
+

@@ -1,8 +1,10 @@
 #ifndef Personagem_H
 #define Personagem_H
 
+#include "date.h"
 #include <iostream>
 #include <string>
+
 
 using std::string;
 using std::cout;
@@ -33,16 +35,32 @@ public:
     inline static int getnumPersonagem() {return numPersonagem;}
 
     void setNumPersonagem(int numPersonagem);
-    
+
+    void printCenarios(string cenarios) const;
+    void printArmas(string armas) const;
+
 private:
     string nomePersonagem;
     int idadePersonagem;
+
+    int dia;
+    int mes;
+    int ano;
+    
     bool check;
 
     static int numPersonagem;
 
     const int MAXSIZENAME; 
     const static int MAXNUMPERSONAGENS;
+
+    static const int ARMAS = 3;
+    static string armas[ARMAS];
+
+    static const int CENARIOS = 3;
+    static string cenarios[CENARIOS];
+    
+    const date DATA_CRIACAO;
 };
 
 #endif
